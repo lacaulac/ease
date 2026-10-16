@@ -15,6 +15,13 @@ def setup():
     ease_setup.setup()
 
 def main() -> None:
+
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--test" and len(sys.argv) > 2:
+            filetotest = sys.argv[2]
+            exporter.export(f"{filetotest}.ics", tmp_file=filetotest)
+            sys.exit(0)
+
     print("Hello from epita-auriga-schedule-exporter!")
 
     if not conf_exists():

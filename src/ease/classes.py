@@ -118,6 +118,7 @@ class Intervention(BaseModel):
     startDateTime: datetime
     endDateTime: datetime
     field: Optional[Dict[str, Any]] = None
+    description: Optional[str] = None
     isExam: bool
     interventionInstructors: Optional[List[InterventionInstructor]] = None
     interventionPedagogicalUnits: Optional[List[Any]] = None

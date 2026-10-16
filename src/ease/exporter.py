@@ -18,10 +18,15 @@ def export(output_file, tmp_file="ex.json"):
         # Parse start and end times (adjust if your format differs from ISO)
         iStart = i.startDateTime
         iEnd = i.endDateTime
+        iUid = f"EASE-{i.id}"
 
-        pedagogicalUnit = i.interventionPedagogicalUnits[0]["pedagogicalUnit"]
-        iName = pedagogicalUnit["caption"]["fr"]
-        iCode = pedagogicalUnit["code"]
+        if i.interventionPedagogicalUnits is not None:
+            pedagogicalUnit = i.interventionPedagogicalUnits[0]["pedagogicalUnit"]
+            iName = pedagogicalUnit["caption"]["fr"]
+            iCode = pedagogicalUnit["code"]
+        else:
+            iName = i.description
+            iCode = "N/A"
 
         resource = i.interventionResources[0]
         iRoom = resource["resource"]["caption"]["fr"]
@@ -33,6 +38,7 @@ def export(output_file, tmp_file="ex.json"):
         event.add("dtend", iEnd)
         event.add("location", iRoom)
         event.add("description", f"Activity Type: {iType}\nCode: {iCode}")
+        event.add('uid', iUid)
 
         # Add the event to the calendar
         cal.add_component(event)

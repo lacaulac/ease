@@ -7,7 +7,7 @@
 Install EASE with pipx:
 
 ```
-pipx install https://github.com/lacaulac/ease/releases/download/0.1.0/ease-0.1.0-py3-none-any.whl
+pipx install https://github.com/lacaulac/ease/releases/download/0.2.0/ease-0.2.0-py3-none-any.whl
 ```
 
 You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`
