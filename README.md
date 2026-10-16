@@ -2,11 +2,17 @@
 
 ## How to
 
-### Using pipx
+### Using pipx (recommended)
 
-Soon available ;)
+Install EASE with pipx:
 
-### Using `uv` and virtual environments (recommended)
+```
+pipx install https://github.com/lacaulac/ease/releases/download/0.1.0/ease-0.1.0-py3-none-any.whl
+```
+
+You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`
+
+### Using `uv` and virtual environments
 
 This was meant to be run with [`uv`](https://docs.astral.sh/uv/getting-started/installation/); it allows seamless use of virtual environments and handles Python versions and dependency installation on its own. You can install it on GNU/Linux systems with the following:
 
