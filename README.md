@@ -7,10 +7,10 @@
 Install EASE with pipx:
 
 ```
-pipx install https://github.com/lacaulac/ease/releases/download/0.2.0/ease-0.2.0-py3-none-any.whl
+pipx install https://github.com/lacaulac/ease/releases/latest/download/ease-py3-none-any.whl
 ```
 
-You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`
+You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`. Updates can then be run using `pipx update ease`
 
 ### Using `uv` and virtual environments
 
@@ -33,14 +33,6 @@ Finally, you can just run EASE anytime you want an export of your calendar :)
 ```sh
 uv run ease
 ```
-
-### The *other* way
-
-1. Use a venv
-2. Run `python3 -m pip install -r requirements.txt` to install dependencies
-3. Set-up EASE by running `python3 src/setup/__init__.py`
-  - **Warning : your password will be stored in plaintext.** You can choose to only store your username :)
-4. Run EASE by running `python3 src/ease/__init__.py`
 
 ## General algorithm
 
