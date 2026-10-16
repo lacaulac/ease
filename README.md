@@ -10,7 +10,9 @@ Install EASE with pipx:
 pipx install https://github.com/lacaulac/ease/releases/latest/download/ease-py3-none-any.whl
 ```
 
-You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`. Updates can then be run using `pipx update ease`
+You can then set-up EASE by running `ease-setup`, and use EASE by running `ease`. Updates can then be run using `pipx update ease`.
+
+*Note: If `pipx` is not installed, you should be able to install it with `pip install pipx`.*
 
 ### Using `uv` and virtual environments
 
