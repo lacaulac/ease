@@ -115,8 +115,8 @@ wheels = [
 ]
 
 [[package]]
-name = "ease"
-version = "0.2.0"
+name = "epita-ease"
+version = "0.3.0"
 source = { editable = "." }
 dependencies = [
     { name = "icalendar" },

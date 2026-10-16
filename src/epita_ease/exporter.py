@@ -38,7 +38,7 @@ def export(output_file, tmp_file="ex.json"):
         event.add("dtend", iEnd)
         event.add("location", iRoom)
         event.add("description", f"Activity Type: {iType}\nCode: {iCode}")
-        event.add('uid', iUid)
+        event.add("uid", iUid)
 
         # Add the event to the calendar
         cal.add_component(event)

@@ -5,7 +5,14 @@ import subprocess
 import sys
 from .config import get_config_path, create_dirs
 
-current_config = {"username": "NONE", "password": "NONE", "export_filename": "schedule.ics"}
+current_config = {
+    "username": "NONE",
+    "password": "NONE",
+    "export_filename": "schedule.ics",
+    "use_cal_share": False,
+    "cal_share_key": "NONE",
+    "cal_share_url": "https://calshare.dev.lacaulac.ovh",
+}
 
 
 def setup():
@@ -15,7 +22,7 @@ def setup():
         [sys.executable, "-m", "playwright", "install", "firefox"],
         capture_output=True,
         text=True,
-        check=True
+        check=True,
     )
 
     create_dirs()
@@ -67,6 +74,38 @@ def setup():
         print("Export filename changed to:", export_filename)
     else:
         print("Keeping current export filename.")
+
+    # Ask for calshare usage
+    use_cal_share = inquirer.confirm(
+        message="Do you want to use CalShare?",
+        default=current_config["use_cal_share"],
+    ).execute()
+    current_config["use_cal_share"] = use_cal_share
+
+    if use_cal_share:
+        # Ask for calshare key
+        cal_share_key = inquirer.text(
+            message="Enter your CalShare key",
+            long_instruction="(leave empty to keep the curent key)",
+        ).execute()
+        if cal_share_key:
+            current_config["cal_share_key"] = cal_share_key
+            print("CalShare key changed to:", cal_share_key)
+        else:
+            print("Keeping current CalShare key.")
+
+        # Ask for calshare url
+        cal_share_url = inquirer.text(
+            message="Enter your CalShare URL",
+            long_instruction='(leave empty to keep "'
+            + current_config["cal_share_url"]
+            + '")',
+        ).execute()
+        if cal_share_url:
+            current_config["cal_share_url"] = cal_share_url
+            print("CalShare URL changed to:", cal_share_url)
+        else:
+            print("Keeping current CalShare URL.")
 
     # Save the config file
     with open(get_config_path(), "w") as f:

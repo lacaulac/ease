@@ -8,11 +8,14 @@ from datetime import datetime
 import toml
 from . import ease_setup
 from .config import get_config_path, conf_exists
+from .calshare_client import CalShareClient
 import sys
 import os
 
+
 def setup():
     ease_setup.setup()
+
 
 def main() -> None:
 
@@ -30,6 +33,15 @@ def main() -> None:
 
     # Load the config file
     config = toml.load(get_config_path())
+
+    required_keys_and_version = [("use_cal_share", "0.3.0")]
+
+    for key, version in required_keys_and_version:
+        if key not in config:
+            print(
+                f"Configuration file is missing the '{key}' config element, added in version {version}.\n==> Please rerun setup! (`ease-setup`) <=="
+            )
+            sys.exit(1)
 
     USERNAME = config["username"]
     PASSWORD = config["password"]
@@ -97,6 +109,16 @@ def main() -> None:
                 exporter.export(config["export_filename"])
                 # Delete the temporary file
                 os.remove("ex.json")
+                if config["use_cal_share"]:
+                    client = CalShareClient(
+                        config["cal_share_url"], token=config["cal_share_key"]
+                    )
+                    cal_url_end = client.upload_file(config["export_filename"]).get(
+                        "calendar_url"
+                    )
+                    print(
+                        f"Calendar uploaded to CalShare: {config['cal_share_url']}{cal_url_end}"
+                    )
                 sys.exit(0)
 
         # Register listeners BEFORE navigation so early requests aren't missed.
