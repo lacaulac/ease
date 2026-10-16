@@ -1,0 +1,22 @@
+[project]
+name = "ease"
+version = "0.1.0"
+description = "EASE (Epita Auriga Schedule Exporter) is a tool to export your schedule from the Auriga platform."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "icalendar>=7.3.0",
+    "inquirerpy>=0.3.4",
+    "playwright>=1.64.0",
+    "pydantic>=2.14.1",
+    "requests>=2.34.2",
+    "toml>=0.10.2",
+]
+
+[project.scripts]
+ease = "ease:main"
+ease-setup = "ease:setup"
+
+[build-system]
+requires = ["uv_build>=0.13.1,<0.14.0"]
+build-backend = "uv_build"
