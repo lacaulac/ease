@@ -1,6 +1,6 @@
 [project]
-name = "ease"
-version = "0.2.0"
+name = "epita-ease"
+version = "0.2.1"
 description = "EASE (Epita Auriga Schedule Exporter) is a tool to export your schedule from the Auriga platform."
 readme = "README.md"
 requires-python = ">=3.14"
@@ -14,8 +14,8 @@ dependencies = [
 ]
 
 [project.scripts]
-ease = "ease:main"
-ease-setup = "ease:setup"
+ease = "epita-ease:main"
+ease-setup = "epita-ease:setup"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]
