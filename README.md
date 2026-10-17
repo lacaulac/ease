@@ -36,6 +36,16 @@ Finally, you can just run EASE anytime you want an export of your calendar :)
 uv run ease
 ```
 
+## Set-up variables
+
+- Username : Optional, will be auto-filled if provided
+  - *technically* an email address
+- Password : Optional, will be auto-filled if provided and auto-click the Login button
+- Export filename : The name of the file to which the calendar will be exported
+- cal-share : A [service](https://github.com/lacaulac/cal-share) that allows automated uploading of the calendar to allow background synchronisation with a provider such as Google Calendar. cal-share can be self-hosted --- accessing a cal-share instance is done through a JSON Web Token (a sort of API key, if you will) that is provided by the instance administrator.
+- cal-share key : The JSON Web Token that identifies you. It is tied to your calendar URL
+- cal-share URL : The address at which the cal-share API can be queried. Defaults to mine.
+
 ## General algorithm
 
 1. Connects to auriga.epita.fr
