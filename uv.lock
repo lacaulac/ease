@@ -116,7 +116,7 @@ wheels = [
 
 [[package]]
 name = "epita-ease"
-version = "0.3.0"
+version = "0.3.1"
 source = { editable = "." }
 dependencies = [
     { name = "icalendar" },

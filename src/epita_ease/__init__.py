@@ -45,6 +45,17 @@ def main() -> None:
 
     USERNAME = config["username"]
     PASSWORD = config["password"]
+    HEADLESS = False
+
+    if "--headless" in sys.argv:
+        if USERNAME != "NONE" and PASSWORD != "NONE":
+            print("Running in headless mode with provided credentials.")
+            HEADLESS = True
+        else:
+            print(
+                "Headless mode requires both username and password to be set in the config file. Please provide them or run without --headless."
+            )
+            print("Proceeding without headless mode (headful ?)")
 
     def make_request(auth_token: str):
 
@@ -83,7 +94,7 @@ def main() -> None:
     )
 
     with sync_playwright() as p:
-        browser = p.firefox.launch(headless=False)
+        browser = p.firefox.launch(headless=HEADLESS)
 
         # A fresh browser context: no existing cookies or saved login.
         context = browser.new_context()
